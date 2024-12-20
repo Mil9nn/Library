@@ -35,7 +35,19 @@ body {
     border-radius: 8px;
     max-width: 30rem;
     flex-basis: 30rem;
-    border-left: 10px solid #9173F3;
+    border-left: 20px solid #9173F3;
+    position: relative;
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 2px;
+}
+
+.delete-btn:hover {
+    background-color:#9173F3;
 }
 
 .book p {
@@ -54,6 +66,8 @@ body {
 }
 
 #new-book-form {
+    position: fixed;
+    z-index: 1000;
     display: inline-block;
     padding: 10px;
     border-radius: 5px;
@@ -133,6 +147,15 @@ button {
     padding: 20px 40px;
 }
 
-.delete-btn:hover {
-    background-color:#9173F3;
+.read-status {
+    background-color: whitesmoke;
+    color: #000;
+    text-align: center;
+    width: 12rem;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.read-status:hover {
+    cursor: pointer;
 }

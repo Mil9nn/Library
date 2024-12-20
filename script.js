@@ -14,9 +14,8 @@ Book.prototype.info = function () {
 function addBookToLibrary() {
     const books = [
        new Book("The Name of the Wind", "Patrick Rothufuss", 662, "Not read yet"),
-       new Book("The Way of Kings", "Brandon Sanderson", 1007, "Not read yet"),
-       new Book("The Blade Itself", "Joe Abercrombie", 515, "Not read yet"),
-       new Book("The Priority of the Orange Tree", "Samantha Shannon", 848, "Not Read Yet"),
+       new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 625, "Not read yet"),
+       new Book("The Priority of the Orange Tree", "Samantha Shannon", 848, "Not read yet"),
        new Book("Assassin's Apprentice", "Robin Hobb", 392, "Not read yet")
     ];
 
@@ -48,12 +47,22 @@ function displayBooks() {
 
        // Adding content to the created elements.
        bookTitle.textContent = book.title;
-       authorName.textContent = `by ${book.author}`;
+       authorName.textContent = `- by ${book.author}`;
        pages.textContent = `${book.noOfPages}-pages`;
-       readStat.textContent = `Status: ${book.readStatus}`;
+       readStat.textContent = book.readStatus;
 
        // Adding Font Awesome trash icon to the delete button.
        deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i>`;
+
+       readStat.addEventListener("click", function () {
+        if (this.textContent == "Read") {
+            this.style.backgroundColor="#fff";
+            this.textContent = "Not read yet";
+        } else if (this.textContent == "Not read yet") {
+            this.style.backgroundColor = "#9173f3";
+            this.textContent = "Read";
+        }
+    });
 
        // Add the delete functionality.
        deleteButton.addEventListener("click", () => {
