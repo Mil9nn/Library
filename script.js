@@ -12,7 +12,9 @@ function addBook() {
     const books = [
         new Book("The Name of the Wind", "Patrick Rothfuss", 662, "Not read yet"),
         new Book("The Priory of the Orange Tree", "Samantha Shannon", 848, "Not read yet"),
-        new Book("The Last Wish", "Andrzej Sapkowski", 360, "read")
+        new Book("The Last Wish", "Andrzej Sapkowski", 360, "read"),
+        new Book("The Hobbit", "J.R.R. Tolkien", 310, "Not read yet"),
+        new Book("The Catcher in the Rye", "J.D. Salinger", 277, "Not read yet"),
     ];
 
     books.forEach(book => {
@@ -34,7 +36,7 @@ function showBook() {
         const bookAuthor = document.createElement("p");
         const bookPages = document.createElement("p");
         const bookStatus = document.createElement("p");
-        const deleteBtn = document.createElement("a");
+        const deleteBtn = document.createElement("button");
 
         // Adding classes
         bookHeading.classList.add("book-title");
@@ -45,8 +47,8 @@ function showBook() {
 
         // Setting the content for each book
         bookHeading.textContent = book.title;
-        bookAuthor.textContent = book.author;
-        bookPages.textContent = book.noOfPages;
+        bookAuthor.textContent = `by ${book.author}`;
+        bookPages.textContent = `${book.noOfPages} pages`;
         bookStatus.textContent = book.readStatus;
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
@@ -103,6 +105,19 @@ function getBook(event) {
 
 const authorOfBook = document.querySelector(".book-author");
 console.log(authorOfBook);
+
+const addBookBtn = document.querySelector("#add-book-btn");
+let displayForm = false;
+addBookBtn.addEventListener("click", function() {
+    const bookForm = document.querySelector("#book-form");
+    if(displayForm === false) {
+        bookForm.style.display="flex";
+        displayForm = true;
+    } else {
+        bookForm.style.display="none";
+        displayForm = false;
+    }
+})
 
 const form = document.querySelector("#book-form");
 form.addEventListener("submit", getBook);

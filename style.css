@@ -1,0 +1,148 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: #4a009e;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-dotted-2.png");
+    font-family: "Pacifico", serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+#library {
+    padding: 20px 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+#library-title {
+    font-size: 5rem;
+}
+
+.library-heading {
+    background-color: #4a009e;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.book {
+    padding: 20px;
+    max-width: 30rem;
+    flex-basis: 30rem;
+    border-radius: 5px;
+    position: relative;
+    color: #fff;
+    box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.6),
+    0 4px 8px rgba(74, 0, 158, 0.4);
+    transition: all 0.3s ease;
+    border: 1px groove #fff;
+}
+
+.book:hover {
+    transform: scale(1.01);
+}
+
+.book-title {
+    color: #56F9FF;
+    font-size: 3rem;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+.book p {
+    font-size: 2rem;
+}
+
+.book-delete {
+    background-color: #4a009e;
+    border: none;
+    position: absolute;
+    font-size: 2.5rem;
+    bottom: 0;
+    right: 0;
+    color: #CAD7DF;
+    padding: 10px;
+}
+
+.book-delete:hover {
+    color: #000;
+    background-color: #4a009e;
+}
+
+/****************************/
+/*********STYLING FORM******/
+/****************************/
+
+#book-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    position: fixed;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    border: 2px solid #fff;
+    z-index: 1000;
+    border-radius: 6px;
+}
+
+#book-form input {
+    padding: 10px 20px;
+}
+
+#book-form select {
+    padding: 10px 20px;
+    width: 20.5rem;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: none;
+}
+
+.form-component {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 30px;
+}
+
+#add-book-btn {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(74, 0, 158, 0.5);
+    border: none;
+}
+
+button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+footer {
+    padding: 20px;
+}
+
+footer p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+
+

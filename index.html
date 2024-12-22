@@ -4,25 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odin Library</title>
+    <link rel="stylesheet" href="style.css" >
+    <!--Font Awesome Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
-
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playwrite+CO+Guides&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 <body>
     <section>
-        <form id="book-form" >
-            <input class="input-title" type="text" placeholder="Title">
-            <input class="input-author" type="text" placeholder="Author name">
-            <input class="input-pages" type="number" placeholder="Number of Pages" >
+        <header class="library-heading" >
+            <h1 id="library-title" >The Odin Library</h1>
+            <button id="add-book-btn" >Add Book <i class="fa-solid fa-plus"></i></button>
+        </header>
+        <form style="display: none" id="book-form" >
+            <h1>Enter Book Details</h1>
+            <input class="input-title" type="text" placeholder="Title" required>
+            <input class="input-author" type="text" placeholder="Author name" required>
+            <input class="input-pages" type="number" placeholder="Number of Pages" required >
             <select class="input-status" >
                 <!-- <option>Select option from below :</option> -->
                 <option>Read</option>
                 <option>Not read yet</option>
             </select>
-            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+            <div class="form-component" >
+            <button type="submit">Add <i class="fa-solid fa-plus"></i></button>
+            <button>Cancel <i class="fa-solid fa-xmark"></i></button>
+            </div>
         </form>
     </section>
+
     <section id="library" >
     </section>
+
+    <footer>
+        <p>Milan Singh @ 2024</p>
+    </footer>
 </body>
 </html>
