@@ -3,40 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <title>Odin Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+
     <script src="script.js" defer></script>
-    <title>Document</title>
 </head>
 <body>
-    <section class="form-section">
-        <button class="show-form-btn">Add New Book</button>
-    
-        <div id="new-book-form" style="display: none;">
-            <h3>Enter New Book Details</h3>
-            <form id="book-form">
-                <input type="text" id="book-title" placeholder="Title:" required>
-                <input type="text" id="book-author" placeholder="Author's Name:" required>
-                <input type="number" id="book-pages" placeholder="No. of pages:" required>
-                <select id="book-read-status" required>
-                    <option>Select Read Status Below :</option>
-                    <option>Read</option>
-                    <option>Not read yet</option>
-                </select><br>
-    
-                <button id="submit-button" type="submit">Add Book</button>
-                <button type="button" id="cancel-button">Cancel</button>
-            </form>
-        </div>
-       </section>
-
-
-    <section class="books-section">
-        <h1><i class="fa-solid fa-book"></i> The Book Library</h1>
-        <div id="books-container">
-        </div>
+    <section>
+        <form id="book-form" >
+            <input class="input-title" type="text" placeholder="Title">
+            <input class="input-author" type="text" placeholder="Author name">
+            <input class="input-pages" type="number" placeholder="Number of Pages" >
+            <select class="input-status" >
+                <!-- <option>Select option from below :</option> -->
+                <option>Read</option>
+                <option>Not read yet</option>
+            </select>
+            <button type="submit"><i class="fa-solid fa-plus"></i></button>
+        </form>
+    </section>
+    <section id="library" >
     </section>
 </body>
 </html>

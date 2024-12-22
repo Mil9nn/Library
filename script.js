@@ -1,115 +1,111 @@
-const myLibrary = [];
+const library = [];
+const container = document.querySelector("#library");
 
 function Book(title, author, noOfPages, readStatus) {
     this.title = title;
     this.author = author;
     this.noOfPages = noOfPages;
-    this.readStatus = readStatus;
+    this.readStatus = readStatus
 }
 
-Book.prototype.info = function () {
-    return `${this.title} by ${this.author}, ${this.noOfPages} pages, ${this.readStatus}`;
-}
-
-function addBookToLibrary() {
+function addBook() {
     const books = [
-       new Book("The Name of the Wind", "Patrick Rothufuss", 662, "Not read yet"),
-       new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 625, "Not read yet"),
-       new Book("The Priority of the Orange Tree", "Samantha Shannon", 848, "Not read yet"),
-       new Book("Assassin's Apprentice", "Robin Hobb", 392, "Not read yet")
+        new Book("The Name of the Wind", "Patrick Rothfuss", 662, "Not read yet"),
+        new Book("The Priory of the Orange Tree", "Samantha Shannon", 848, "Not read yet"),
+        new Book("The Last Wish", "Andrzej Sapkowski", 360, "read")
     ];
 
-    // Pushing Each Book into myLibrary.
-    books.forEach((book) => {
-        myLibrary.push(book);
+    books.forEach(book => {
+        library.push(book);
     });
 }
 
-function displayBooks() {
-    const container = document.querySelector("#books-container");
-    container.innerHTML = ""; // Clear previous content.
+function showBook() {
+  container.innerHTML = "";
 
-    myLibrary.forEach((book, bookIndex) => {
-       const bookElement = document.createElement("div");
-       const bookTitle = document.createElement("h2");
-       const authorName = document.createElement("p");
-       const pages = document.createElement("p");
-       const readStat = document.createElement("p");
-       const deleteButton = document.createElement("button");
+   library.forEach((book, index) => {
+        // Book Div
+        const bookContainer = document.createElement("div");
+        bookContainer.classList.add("book");
+        container.appendChild(bookContainer);
+    
+        // Creating new elements for each book
+        const bookHeading = document.createElement("h1");
+        const bookAuthor = document.createElement("p");
+        const bookPages = document.createElement("p");
+        const bookStatus = document.createElement("p");
+        const deleteBtn = document.createElement("a");
 
-       // Adding classes to the div and p.
-        bookElement.classList.add("book");
-        bookTitle.classList.add("book-title");
-        authorName.classList.add("author-name");
-        pages.classList.add("no-of-pages");
-        readStat.classList.add("read-status");
-        deleteButton.classList.add("delete-btn");
+        // Adding classes
+        bookHeading.classList.add("book-title");
+        bookAuthor.classList.add("book-author");
+        bookPages.classList.add("book-pages");
+        bookStatus.classList.add("book-status");
+        deleteBtn.classList.add("book-delete");
 
-       // Adding content to the created elements.
-       bookTitle.textContent = book.title;
-       authorName.textContent = `- by ${book.author}`;
-       pages.textContent = `${book.noOfPages}-pages`;
-       readStat.textContent = book.readStatus;
+        // Setting the content for each book
+        bookHeading.textContent = book.title;
+        bookAuthor.textContent = book.author;
+        bookPages.textContent = book.noOfPages;
+        bookStatus.textContent = book.readStatus;
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
-       // Adding Font Awesome trash icon to the delete button.
-       deleteButton.innerHTML = `<i class="fa fa-trash" aria-hidden="true"></i>`;
+        // Append book details to the container
+        bookContainer.appendChild(bookHeading);
+        bookContainer.appendChild(bookAuthor);
+        bookContainer.appendChild(bookPages);
+        bookContainer.appendChild(bookStatus);
+        bookContainer.appendChild(deleteBtn);
 
-       readStat.addEventListener("click", function () {
-        if (this.textContent == "Read") {
-            this.style.backgroundColor="#fff";
-            this.textContent = "Not read yet";
-        } else if (this.textContent == "Not read yet") {
-            this.style.backgroundColor = "#9173f3";
-            this.textContent = "Read";
-        }
-    });
+        // Book Status Toggle Functionality.
+        bookStatus.addEventListener("click", function() {
+            if(this.textContent === "Read") {
+                this.textContent = "Not read yet";
+            } else {
+                this.textContent = "Read";
+            }
+        });
 
-       // Add the delete functionality.
-       deleteButton.addEventListener("click", () => {
-           myLibrary.splice(bookIndex, 1); // Using bookIndex to remove the correct book
-           displayBooks(); // Refresh the book list
-       });
+        // Delete 
+        deleteBtn.addEventListener("click", function() {
+            library.splice(index, 1);  // value 1 is the delete count here
+            // Re-render the book after deletion.
+            showBook();
+        })
 
-       // Append all the elements to the container.
-       bookElement.appendChild(bookTitle);
-       bookElement.appendChild(authorName);
-       bookElement.appendChild(pages);
-       bookElement.appendChild(readStat);
-       bookElement.appendChild(deleteButton);
-
-       container.appendChild(bookElement);
-    });
+   });
 }
 
-addBookToLibrary();
-displayBooks();
-
-const showFormBtn = document.querySelector(".show-form-btn");
-const hideFormBtn = document.querySelector("#cancel-button");
-const form = document.querySelector("#new-book-form");
-
-showFormBtn.addEventListener("click", function () {
-    form.style.display = "inline-block";
-});
-
-hideFormBtn.addEventListener("click", function () {
-    form.style.display = "none";
-});
-
-function addNewBook(event) {
+function getBook(event) {
     event.preventDefault();
 
-    const title = document.querySelector("#book-title").value;
-    const author = document.querySelector("#book-author").value;
-    const noOfPages = document.querySelector("#book-pages").value;
-    const readStatus = document.querySelector("#book-read-status").value;
+    // Get input values from the form
+    const title = document.querySelector(".input-title").value;
+    const author = document.querySelector(".input-author").value;
+    const noOfPages = document.querySelector(".input-pages").value;
+    const readStatus = document.querySelector(".input-status").value;
 
-    const newBook = new Book(title, author, parseInt(noOfPages), readStatus);
-    myLibrary.push(newBook);
-    form.style.display = "none"; // Hide the form after adding the book.
-    displayBooks();  // Refresh the book list
+    // Create a new Book object and add it to the library
+    const newBook = new Book(title, author, noOfPages, readStatus);
+    library.push(newBook);
 
-    document.querySelector("#book-form").reset(); // Clearing the form inputs
+    // Display the new book
+    const bookContainer = document.createElement("div");
+    bookContainer.classList.add("book");
+    container.appendChild(bookContainer);
+
+    // Display the new book
+    showBook();
+
+    // Clears the form inputs
+   form.reset();
 }
 
-document.querySelector("#book-form").addEventListener("submit", addNewBook);
+const authorOfBook = document.querySelector(".book-author");
+console.log(authorOfBook);
+
+const form = document.querySelector("#book-form");
+form.addEventListener("submit", getBook);
+
+addBook();
+showBook();
