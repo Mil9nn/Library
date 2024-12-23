@@ -10,7 +10,7 @@ html {
 
 body {
     background-color: #4a009e;
-    background-image: url("https://www.transparenttextures.com/patterns/dark-dotted-2.png");
+    background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
     font-family: "Pacifico", serif;
     font-style: normal;
     font-weight: 400;
@@ -28,12 +28,11 @@ body {
 }
 
 .library-heading {
-    background-color: #4a009e;
-    background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
     padding: 20px 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px groove #fff;
 }
 
 .book {
@@ -67,18 +66,18 @@ body {
 
 .book-delete {
     background-color: #4a009e;
+    background-image: url("https://www.transparenttextures.com/patterns/dark-leather.png");
     border: none;
     position: absolute;
     font-size: 2.5rem;
     bottom: 0;
     right: 0;
     color: #CAD7DF;
-    padding: 10px;
 }
 
 .book-delete:hover {
-    color: #000;
-    background-color: #4a009e;
+    color: black;
+    background-color:unset;
 }
 
 /****************************/

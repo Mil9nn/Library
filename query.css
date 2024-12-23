@@ -1,0 +1,6 @@
+@media (max-width: 38.2em) {
+    .library-heading {
+       flex-direction: column;
+       gap: 15px;
+    }
+}

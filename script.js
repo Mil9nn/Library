@@ -113,7 +113,13 @@ addBookBtn.addEventListener("click", function() {
     if(displayForm === false) {
         bookForm.style.display="flex";
         displayForm = true;
-    } else {
+    }
+})
+
+const formCancelBtn = document.querySelector(".form-cancel-btn");
+formCancelBtn.addEventListener("click", function() {
+    const bookForm = document.querySelector("#book-form");
+    if(displayForm === true) {
         bookForm.style.display="none";
         displayForm = false;
     }
